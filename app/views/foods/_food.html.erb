@@ -4,10 +4,8 @@
   <p>
     <%= link_to "詳細", food %>
     <% if current_user.id == food.user_id %>
-      <p>
         <%= link_to "編集", edit_food_path(food) %>
         <%= link_to "削除", food_path(food), method: :delete, data: { confirm: "削除しますか？" } %>
-      </p>
     <% end %>
   </p>
 </div>
