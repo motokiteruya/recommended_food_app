@@ -3,7 +3,13 @@ class FoodsController < ApplicationController
     @foods = Food.includes(:user).order(:created_at)
   end
 
+  def new
+    @food = Food.new
+  end
+
   def create
+    food = current_user.foods.create!(food_params)
+    redirect_to food
   end
 
   def show
@@ -16,5 +22,10 @@ class FoodsController < ApplicationController
   end
 
   def destroy
+
+    private
+
+  def food_params
+    params.require(:food).permit(:name)
   end
 end
